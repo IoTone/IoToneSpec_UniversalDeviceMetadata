@@ -36,7 +36,9 @@ Since there is no approach, define one.  We propose a schema-free approach, putt
 Define a BNF Grammar for description, so one can easily write a parser, though this is more instructional for potential users than it is for the purposes of needing to write a parser. 
 
 devices
-> [[device*]]
+```
+[[device*]]
+```
 
 device
 ```
@@ -45,33 +47,41 @@ device
 ```
 
 members 
-> Attrpair 
-> device 
-> attrpair , device, members 
+```
+Attrpair 
+device 
+attrpair , device, members 
+```
 
 attrpair 
-> descriptiveattrkey : value 
+```
+descriptiveattrkey : value 
+```
 
 value 
-> Any value JSON value 
+```
+Any value JSON value 
+```
  
 descriptiveattrkey 
-> Any valid JSON String 
-> udm_key 
-> udm_guid 
-> udm_class 
-> udm_model_name 
-> udm_model_number 
-> udm_oem 
-> udm_chipset_vendor 
-> udm_chipset_type 
-> udm_cpu_max_frequency 
-> udm_cpu_number_of_cores 
-> udm_network_interfaces 
-> udm_network_interface [TODO, elaborate on this] 
-> udm_tags 
-> udm_serialno 
-> udm_spec_version
+```
+Any valid JSON String 
+udm_key 
+udm_guid 
+udm_class 
+udm_model_name 
+udm_model_number 
+udm_oem 
+udm_chipset_vendor 
+udm_chipset_type 
+udm_cpu_max_frequency 
+udm_cpu_number_of_cores 
+udm_network_interfaces 
+udm_network_interface [TODO, elaborate on this] 
+udm_tags 
+udm_serialno 
+udm_spec_version
+```
 
 It is recommended to follow the JSON-Schema format to provide conforming schema definitions for the initial specification.  However, JSON-Schema isn't strictly necessary to implement this specification.
 
