@@ -1,5 +1,9 @@
-Universal Device Metadata (UDM) Specification
-=============================================
+Universal Device Metadata (UDM) Specification draft v0.9
+========================================================
+
+This document is released under the terms of the [Apache 2.0 License](https://raw.githubusercontent.com/IoTone/IoToneSpec_UniversalDeviceMetadata/master/LICENSE)
+
+Copyright 2014 IoTone, Inc.
 
 # Abstract
 
