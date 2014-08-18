@@ -39,9 +39,10 @@ devices
 > [[device*]]
 
 device
-> blah blah
->   {}
->   { members }
+```
+{}
+{ members }
+```
 
 members 
 > Attrpair 
