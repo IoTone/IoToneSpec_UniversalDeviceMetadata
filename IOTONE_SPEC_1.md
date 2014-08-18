@@ -37,7 +37,7 @@ Define a BNF Grammar for description, so one can easily write a parser, though t
 
 devices
 ```
-[[device*]]
+[device*]
 ```
 
 device
@@ -164,3 +164,4 @@ The UDM solution provides flexibility and some options for a variety of implemen
 
 *    GSMArena.com 
 
+* https://en.wikipedia.org/wiki/Metadata_standards
