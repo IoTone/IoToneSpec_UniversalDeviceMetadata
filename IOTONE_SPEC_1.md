@@ -35,66 +35,41 @@ Since there is no approach, define one.  We propose a schema-free approach, putt
 
 Define a BNF Grammar for description, so one can easily write a parser, though this is more instructional for potential users than it is for the purposes of needing to write a parser. 
 
- 
+devices
+> [device*]
 
-device 
-
-{} 
-
-{ members }  
+device
+> {} 
+> { members }  
 
 members 
-
-Attrpair 
-
-device 
-
-attrpair , device, members 
+> Attrpair 
+> device 
+> attrpair , device, members 
 
 attrpair 
-
-descriptiveattrkey : value 
-
- 
+> descriptiveattrkey : value 
 
 value 
-
-Any value JSON value 
+> Any value JSON value 
  
-
 descriptiveattrkey 
-
-Any valid JSON String 
-
-udm_key 
-
-udm_guid 
-
-udm_class 
-
-udm_model_name 
-
-udm_model_number 
-
-udm_oem 
-
-udm_chipset_vendor 
-
-udm_chipset_type 
-
-udm_cpu_max_frequency 
-
-udm_cpu_number_of_cores 
-
-udm_network_interfaces 
-
-udm_network_interface [TODO, elaborate on this] 
-
-udm_tags 
-
-udm_serialno 
-
- 
+> Any valid JSON String 
+> udm_key 
+> udm_guid 
+> udm_class 
+> udm_model_name 
+> udm_model_number 
+> udm_oem 
+> udm_chipset_vendor 
+> udm_chipset_type 
+> udm_cpu_max_frequency 
+> udm_cpu_number_of_cores 
+> udm_network_interfaces 
+> udm_network_interface [TODO, elaborate on this] 
+> udm_tags 
+> udm_serialno 
+> udm_spec_version
 
 It is recommended to follow the JSON-Schema format to provide conforming schema definitions for the initial specification.  However, JSON-Schema isn't strictly necessary to implement this specification.
 
@@ -104,10 +79,10 @@ In survey of the possible existing alternatives, there are hints of solutions th
 
  
 
-## UPnP 1.1 Device Schema[^footnote_UPnP] (Appendix B1) 
+## UPnP 1.1 Device Schema (Appendix B1) 
 
 
-[^footnote_UPnP]: UPnP 1.1 Device Schema is found in Appendix B1 http://www.upnp.org/specs/arch/UPnP-arch-DeviceArchitecture-v1.1.pdf 
+UPnP 1.1 Device Schema is found in Appendix B1 http://www.upnp.org/specs/arch/UPnP-arch-DeviceArchitecture-v1.1.pdf 
 
 Pro:  
 
@@ -120,6 +95,23 @@ Pro:
 Con: 
 
     XML is fairly heavyweight 
+
+## Certimo.org Device Ratings
+
+The Certimo.org Consortium offers device ratings for Usability.  They provide a very good set of details they collect from
+each device.  For example: http://www.certimo.org/devices/samsung-galaxy-s5#node_device_full_group_device_details
+
+This covers all of the essential details for mobile handsets.  It provides many of the details you would expect to see on a 
+product datasheet.
+
+Pro:
+
+* Very detailed device profiles for mobile
+
+Con:
+
+* Not distributed in a format that we can consume 
+* Mobile handset focused, but doesn't cover details of individual components in great detail
 
 
 I am still looking for other alternatives. 
