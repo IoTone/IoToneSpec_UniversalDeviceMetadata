@@ -36,11 +36,12 @@ Since there is no approach, define one.  We propose a schema-free approach, putt
 Define a BNF Grammar for description, so one can easily write a parser, though this is more instructional for potential users than it is for the purposes of needing to write a parser. 
 
 devices
-> [device*]
+> [[device*]]
 
 device
+> blah blah
 >   {}
->   { members }  
+>   { members }
 
 members 
 > Attrpair 
