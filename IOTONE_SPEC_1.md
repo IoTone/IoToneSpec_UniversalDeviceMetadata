@@ -9,14 +9,42 @@ Copyright 2014 IoTone, Inc.
 
 Universal Device Metadata(UDM) Specification is a microformat intended to describe any kind of device and its characteristics.  It isn't intended as a programmatic interface description to low level hardware details (like addresses and registers), but as a high level reference to a device's overall hardware specs, like memory, CPU details, etc. 
 
+# Conformance
+
+ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in RFC 2119 [RFC2119].
+
+ The terms "JSON", "JSON text", "JSON value", "member", "element", "object", "array", "number", "string", "boolean", "true", "false", and "null" in this document are to be interpreted as defined in RFC 4627 [RFC4627]. 
+
+# Terminology
+
+## JSON Primitives
+
+The following primitves are:
+
+*    array
+>        A JSON array. 
+*   boolean
+>        A JSON boolean. 
+*    integer
+>        A JSON number without a fraction or exponent part. 
+*    number
+>        Any JSON number. Number includes integer. 
+*    null
+>        The JSON null value. 
+*    object
+>        A JSON object. 
+*    string
+>        A JSON string. 
+
+
 # Problem
 
-There are numerous standards and ad-hoc approaches to defining device specifications with varying levels of granularity.  In terms of the nature and rigor of the data captured, some approaches require very strict schema definition, while others are very loose and capable of being extended over time.  As well, the format of the data varies (binary, xml, text, key value properties, json, sql, etc..).  Because of these differences, there isn't a good universal approach on the market, making it possible to get stuck in committee based standards, stove pipe proprietary approaches, or incompatible approaches. 
+There are numerous standards and ad-hoc approaches to defining device specifications with varying levels of granularity.  In terms of the nature and rigor of the data captured, some approaches require very strict schema definition, while others are very loose and capable of being extended over time.  As well, the format of the data varies (binary, xml, text, key value properties, json, sql, etc..).  Because of these differences, there isn't a good universal approach on the market, making it possible to get stuck in committee based standards, stove pipe proprietary approaches requiring a license, or incompatible approaches. 
 
 
 # Solution 
 
-Since there is no approach, define one.  We propose a schema-free approach, putting the burden on the application to perform validation and constraint checks.  We also propose to go with a nearly universal format that is easy to deal with.  JSON seems to meet these criteria.  We can use it to provide enough guidance for anyone to quickly and easily create device specifications. 
+Since there is no approach that fits the requirements, define one.  The proposal is to use a schema-free approach in terms of requiring conformance, putting the burden on the application to perform validation and constraint checks.  It is also proposed to go with a nearly universal format that is easy to deal with.  JSON seems to meet these criteria.  JSON-Schema will be provided to offer enough guidance for anyone to quickly and easily create device specifications.
 
 # Requirements 
 
@@ -30,17 +58,19 @@ Since there is no approach, define one.  We propose a schema-free approach, putt
 -    No Standards Body necessary 
 -    Doesn't duplicate an existing solution that is clearly already good enough 
 -    Future proof through extensibility 
+-    No 3rd Party Intellectual Property Rights associated with the design
+-    Easily handle self-referential attributes
 
-# Implementation 
+# Common Device Attributes
 
 Define a BNF Grammar for description, so one can easily write a parser, though this is more instructional for potential users than it is for the purposes of needing to write a parser. 
 
-devices
+udm_devices
 ```
-[device*]
+[udm_device*]
 ```
 
-device
+udm_device
 ```
 {}
 { members }
@@ -66,24 +96,220 @@ Any value JSON value
 descriptiveattrkey 
 ```
 Any valid JSON String 
-udm_key 
-udm_guid 
-udm_class 
+udm_schema_name
+udm_version
+udm_key
+udm_guid
+udm_serialno
+udm_class
+udm_type
+udm_capabilities
 udm_model_name 
 udm_model_number 
 udm_oem 
-udm_chipset_vendor 
-udm_chipset_type 
-udm_cpu_max_frequency 
-udm_cpu_number_of_cores 
-udm_network_interfaces 
-udm_network_interface [TODO, elaborate on this] 
+udm_chipset_details {
+   udm_chipset_vendor 
+   udm_chipset_type 
+   udm_cpu_max_frequency 
+   udm_cpu_number_of_cores 
+}
+udm_network_interfaces {
+   udm_network_interface
+}
+udm_battery_details
 udm_tags 
-udm_serialno 
-udm_spec_version
+udm_memory_volatile
+udm_memory_non_volatile
+udm_hdds
+udm_sensors
+udm_io_ports
+udm_internal_slots
+udm_power_input
+udm_power_outputs
+udm_vendor
+udm_mfg_origin
+udm_mfg_date
+udm_displays
 ```
 
+Users of UDM are free to define custom attributes to meet needs not yet forseen.
+
+# UDM Schema
+
 It is recommended to follow the JSON-Schema format to provide conforming schema definitions for the initial specification.  However, JSON-Schema isn't strictly necessary to implement this specification.
+
+The draft schema follows below.  It was generated using a sample input
+```
+{
+   "type":"object",
+   "$schema":"http://json-schema.org/draft-03/schema",
+   "id":"http://iotone.org/specs/1/schema",
+   "required":false,
+   "properties":{
+      "udm_schema_name":{
+         "type":"string",
+         "id":"http://iotone.org/specs/1/schema/udm_schema_name",
+         "required":false
+      },
+      "udm_version":{
+         "type":"string",
+         "id":"http://iotone.org/specs/1/schema/udm_version",
+         "required":false
+      },
+      "udm_devices":{
+         "type":"array",
+         "id":"http://iotone.org/specs/1/schema/udm_devices",
+         "required":true,
+         "items":{
+            "type":"object",
+            "id":"http://iotone.org/specs/1/schema/udm_devices/0",
+            "required":false,
+            "properties":{
+               "udm_key":{
+                  "type":"string",
+                  "id":"http://iotone.org/specs/1/schema/udm_devices/0/udm_key",
+                  "required":false
+               },
+               "udm_guid":{
+                  "type":"string",
+                  "id":"http://iotone.org/specs/1/schema/udm_devices/0/udm_guid",
+                  "required":false
+               },
+               "udm_schema_name":{
+                  "type":"string",
+                  "id":"http://iotone.org/specs/1/schema/udm_devices/0/udm_schema_name",
+                  "required":false
+               },
+               "udm_os_version":{
+                  "type":"string",
+                  "id":"http://iotone.org/specs/1/schema/udm_devices/0/udm_version",
+                  "required":false
+               },
+               "udm_serialno":{
+                  "type":"string",
+                  "id":"http://iotone.org/specs/1/schema/udm_devices/0/udm_serialno",
+                  "required":false
+               },
+               "udm_class":{
+                  "type":"string",
+                  "id":"http://iotone.org/specs/1/schema/udm_devices/0/udm_class",
+                  "required":false
+               },
+               "udm_type":{
+                  "type":"string",
+                  "id":"http://iotone.org/specs/1/schema/udm_devices/0/udm_type",
+                  "required":false
+               },
+               "udm_capabilities":{
+                  "type":"string",
+                  "id":"http://iotone.org/specs/1/schema/udm_devices/0/udm_capabilities",
+                  "required":false
+               },
+               "udm_model_name":{
+                  "type":"string",
+                  "id":"http://iotone.org/specs/1/schema/udm_devices/0/udm_model_name",
+                  "required":false
+               },
+               "udm_model_number":{
+                  "type":"string",
+                  "id":"http://iotone.org/specs/1/schema/udm_devices/0/udm_model_number",
+                  "required":false
+               },
+               "udm_oem":{
+                  "type":"string",
+                  "id":"http://iotone.org/specs/1/schema/udm_devices/0/udm_oem",
+                  "required":false
+               },
+               "udm_chipset_details":{
+                  "type":"string",
+                  "id":"http://iotone.org/specs/1/schema/udm_devices/0/udm_chipset_details",
+                  "required":false
+               },
+               "udm_network_interfaces":{
+                  "type":"string",
+                  "id":"http://iotone.org/specs/1/schema/udm_devices/0/udm_network_interfaces",
+                  "required":false
+               },
+               "udm_battery_details":{
+                  "type":"string",
+                  "id":"http://iotone.org/specs/1/schema/udm_devices/0/udm_battery_details",
+                  "required":false
+               },
+               "udm_tags":{
+                  "type":"string",
+                  "id":"http://iotone.org/specs/1/schema/udm_devices/0/udm_tags",
+                  "required":false
+               },
+               "udm_memory_volatile":{
+                  "type":"string",
+                  "id":"http://iotone.org/specs/1/schema/udm_devices/0/udm_memory_volatile",
+                  "required":false
+               },
+               "udm_memory_nonvolatile":{
+                  "type":"string",
+                  "id":"http://iotone.org/specs/1/schema/udm_devices/0/udm_memory_nonvolatile",
+                  "required":false
+               },
+               "udm_hdds":{
+                  "type":"string",
+                  "id":"http://iotone.org/specs/1/schema/udm_devices/0/udm_hdds",
+                  "required":false
+               },
+               "udm_sensors":{
+                  "type":"string",
+                  "id":"http://iotone.org/specs/1/schema/udm_devices/0/udm_sensors",
+                  "required":false
+               },
+               "udm_io_ports":{
+                  "type":"string",
+                  "id":"http://iotone.org/specs/1/schema/udm_devices/0/udm_ioports",
+                  "required":false
+               },
+               "udm_internal_slots":{
+                  "type":"string",
+                  "id":"http://iotone.org/specs/1/schema/udm_devices/0/udm_internal_slots",
+                  "required":false
+               },
+               "udm_power_inputs":{
+                  "type":"string",
+                  "id":"http://iotone.org/specs/1/schema/udm_devices/0/udm_power_inputs",
+                  "required":false
+               },
+               "udm_power_outputs":{
+                  "type":"string",
+                  "id":"http://iotone.org/specs/1/schema/udm_devices/0/udm_power_outputs",
+                  "required":false
+               },
+               "udm_vendor":{
+                  "type":"string",
+                  "id":"http://iotone.org/specs/1/schema/udm_devices/0/udm_vendor",
+                  "required":false
+               },
+               "udm_mfg_origin":{
+                  "type":"string",
+                  "id":"http://iotone.org/specs/1/schema/udm_devices/0/udm_mfg_origin",
+                  "required":false
+               },
+               "udm_mfg_date":{
+                  "type":"string",
+                  "id":"http://iotone.org/specs/1/schema/udm_devices/0/udm_mfg_date",
+                  "required":false
+               },
+               "udm_displays":{
+                  "type":"string",
+                  "id":"http://iotone.org/specs/1/schema/udm_devices/0/udm_displays",
+                  "required":false
+               }
+            }
+         }
+      }
+   }
+}
+```
+
+# Example Use
+
+
 
 # Alternatives 
 
@@ -134,10 +360,10 @@ The UDM solution provides flexibility and some options for a variety of implemen
 
 # Normative References 
 
-# Non-Normative References 
-
-
 * JSON Spec - http://json.org/ 
+*  http://json-schema.org/latest/json-schema-core.html
+
+# Non-Normative References 
 
 * SmartThings Device Type Specification - http://docs.smartthings.com/en/latest/device-type-developers-guide/anatomy-of-a-device-type.html 
 
@@ -146,7 +372,6 @@ The UDM solution provides flexibility and some options for a variety of implemen
 *    Nottingham JSON Home: http://tools.ietf.org/html/draft-nottingham-json-home-03 
 *    RAML: http://raml.org/index.html 
 
-*  JSON Schema: http://json-schema.org/ 
 
 *    SensorML: http://www.sensorml.com/sensorML-2.0/examples/index.html 
 
