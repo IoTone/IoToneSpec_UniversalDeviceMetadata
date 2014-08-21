@@ -530,6 +530,7 @@ The draft schema follows below.  It was generated using a sample input
          "udm_key": "user-defined-key4",
          "udm_model_name": "SensorTag",
          "udm_model_number": "CC2541DK-MINI",
+         "udm_model_rev": "1.0.2",
          "udm_oem": "Texas Instruments",
          "udm_guid": "1293FTI123jf24",
          "udm_type": "ble-accessory",
@@ -543,7 +544,7 @@ The draft schema follows below.  It was generated using a sample input
          "udm_chipset_details": {
             "udm_chipset_inst_set": "8051",
             "udm_chipset_vendor": "TI",
-            "udm_chipset_type": "CC2540",
+            "udm_chipset_type": "CC2540"
          },
          "udm_sensors": {
             "accelerometer": "1",
