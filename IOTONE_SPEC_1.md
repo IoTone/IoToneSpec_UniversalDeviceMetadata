@@ -371,12 +371,58 @@ The draft schema follows below.  It was generated using a sample input
             "magnetic": "1",
             "sound": "1"
          }
+      },
+      {
+         "udm_key": "user-defined-key2",
+         "udm_model_name": "Galaxy S II",
+         "udm_model_no": "I9100",
+         "udm_oem": "Samsung",
+         "udm_guid": "a80000Bf1f002",
+         "udm_os_version": "4.0.4",
+         "udm_os": "Android",
+         "udm_type": "phone",
+         "udm_chipset_details": {
+            "udm_chipset_inst_set": "armeabi-v7a",
+            "udm_chipset_vendor": "Exynos",
+            "udm_chipset_type": "4210",
+            "udm_cpu_max_frequency": "1.0 GHz",
+            "udm_cpu_number_of_cores": "2"
+         },
+         "udm_displays": [{
+            "display_resolution": "480x800",
+            "ppi": "217"
+         }],
+         "udm_network_interfaces": [
+            { 
+               "lo": 
+               [ { "address": "127.0.0.1",
+                  "family": "IPv4",
+                  "internal": true },
+                 { "address": "::1",
+                   "family": "IPv6",
+                   "internal": true } ]
+            }, {
+               "wlan0": 
+               [ { "address": "10.0.0.3",
+                  "family": "IPv4",
+                  "internal": false },
+                 { "address": "fe80::de85:deff:fe90:4cb8",
+                   "family": "IPv6",
+                   "internal": false } ] 
+            }
+         ],
+         "udm_sensors": {
+            "accelerometer": "1",
+            "compass": "1",
+            "gyroscope": "1",
+            "proximity": "1"
+         }
       }
    ]
 }
 ```
 
-*Sample 
+
 # Alternatives 
 
 In survey of the possible existing alternatives, there are hints of solutions that come close to what we are looking for.  In most cases, where XML is utilized, the "API Surface" for the definitions becomes vast. 
