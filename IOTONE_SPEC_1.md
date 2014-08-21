@@ -60,7 +60,7 @@ Since there is no approach that fits the requirements, define one.  The proposal
 
 # Common Device Attributes
 
-Define a BNF Grammar for description, so one can easily write a parser, though this is more instructional for potential users than it is for the purposes of needing to write a parser. 
+Below are a list of attributes that will be used to compose UDM.
 
 udm_devices
 ```
@@ -138,7 +138,7 @@ Users of UDM are free to define custom attributes to meet needs not yet forseen.
 
 It is recommended to follow the JSON-Schema format to provide conforming schema definitions for the initial specification.  However, JSON-Schema isn't strictly necessary to implement this specification.
 
-The draft schema follows below.  It was generated using a sample input
+The draft schema follows below.  It was generated using a sample input into http://www.jsonschema.net/
 ```
 {
    "type":"object",
