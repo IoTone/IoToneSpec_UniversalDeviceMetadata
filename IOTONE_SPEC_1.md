@@ -333,6 +333,13 @@ The draft schema follows below.  It was generated using a sample input
          "udm_os_version": "4.4.2",
          "udm_os": "Android",
          "udm_type": "tablet",
+         "udm_memory_volatile": {
+            "size": "1GB"
+         },
+         "udm_memory_non_volatile": {
+            "size": "16GB",
+            "type": "flash"
+         },
          "udm_chipset_details": {
             "udm_chipset_inst_set": "armeabi-v7a",
             "udm_chipset_vendor": "Qualcomm",
@@ -416,12 +423,58 @@ The draft schema follows below.  It was generated using a sample input
             "compass": "1",
             "gyroscope": "1",
             "proximity": "1"
+         },
+         "udm_io_ports": {
+            "USB": "Host/Device",
+            "SPI": "2",
+            "I2C": "2",
+            "UART": "3",
+            "PWM": "TPM",
+            "ADC": "16 bit",
+            "DAC": "1x 12bit",
+            "Touch Sensor": "1",
+            "GPIO": "66" 
          }
       }
    ]
 }
 ```
 
+*Sample Microcontroller*
+```
+{
+   "udm_version":"0.9",
+   "udm_devices": [
+      {
+         "udm_key": "user-defined-key3",
+         "udm_model_name": "FRDM-KL25Z",
+         "udm_model_no": "MKL25Z128VLK4",
+         "udm_oem": "Freescale",
+         "udm_guid": "33u821381203810jdsd01231",
+         "udm_os_version": "20140530_k20dx128_kl25z_if_opensda",
+         "udm_os": "mbed",
+         "udm_type": "32-bit mcu",
+         "udm_memory_volatile": {
+            "size": "16Kb"
+         },
+         "udm_memory_non_volatile": {
+            "size": "128Kb",
+            "type": "flash"
+         },
+         "udm_chipset_details": {
+            "udm_chipset_inst_set": "arm-thumb",
+            "udm_chipset_vendor": "Freescale",
+            "udm_chipset_type": "ARM® Cortex™-M0+ Core",
+            "udm_cpu_max_frequency": "48 MHz"
+         },
+         "udm_sensors": {
+            "accelerometer": "1",
+            "capacative-touch": "1"
+         }
+      }
+   ]
+}
+```
 
 # Alternatives 
 
