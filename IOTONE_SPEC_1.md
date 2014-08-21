@@ -103,7 +103,8 @@ udm_type
 udm_capabilities
 udm_model_name
 udm_mktg_name
-udm_model_number 
+udm_model_number
+udm_model_rev
 udm_oem 
 udm_chipset_details {
    udm_chipset_inst_set
@@ -212,6 +213,11 @@ The draft schema follows below.  It was generated using a sample input
                "udm_model_name":{
                   "type":"string",
                   "id":"http://iotone.org/specs/1/schema/udm_devices/0/udm_model_name",
+                  "required":false
+               },
+               udm_model_rev":{
+                  "type":"string",
+                  "id":"http://iotone.org/specs/1/schema/udm_devices/0/udm_model_rev",
                   "required":false
                },
                "udm_mktg_name":{
@@ -327,7 +333,7 @@ The draft schema follows below.  It was generated using a sample input
       {
          "udm_key": "user-defined-key",
          "udm_model_name": "Nexus",
-         "udm_model_no": "Nexus 7",
+         "udm_model_number": "Nexus 7",
          "udm_oem": "ASUS",
          "udm_guid": "0585b8a6",
          "udm_os_version": "4.4.2",
@@ -382,7 +388,7 @@ The draft schema follows below.  It was generated using a sample input
       {
          "udm_key": "user-defined-key2",
          "udm_model_name": "Galaxy S II",
-         "udm_model_no": "I9100",
+         "udm_model_number": "I9100",
          "udm_oem": "Samsung",
          "udm_guid": "a80000Bf1f002",
          "udm_os_version": "4.0.4",
@@ -448,17 +454,17 @@ The draft schema follows below.  It was generated using a sample input
       {
          "udm_key": "user-defined-key3",
          "udm_model_name": "FRDM-KL25Z",
-         "udm_model_no": "MKL25Z128VLK4",
+         "udm_model_number": "MKL25Z128VLK4",
          "udm_oem": "Freescale",
          "udm_guid": "33u821381203810jdsd01231",
          "udm_os_version": "20140530_k20dx128_kl25z_if_opensda",
          "udm_os": "mbed",
          "udm_type": "32-bit mcu",
          "udm_memory_volatile": {
-            "size": "16Kb"
+            "size": "16kB"
          },
          "udm_memory_non_volatile": {
-            "size": "128Kb",
+            "size": "128kB",
             "type": "flash"
          },
          "udm_chipset_details": {
@@ -484,10 +490,9 @@ The draft schema follows below.  It was generated using a sample input
       {
          "udm_key": "user-defined-key3",
          "udm_model_name": "TOQ",
-         "udm_model_no": "ToqSW1",
+         "udm_model_number": "ToqSW1",
          "udm_oem": "Qualcomm",
          "udm_guid": "TQ12391js92313132",
-         "udm_os_version": "",
          "udm_os": "ThreadX RTOS",
          "udm_type": "smartwatch",
          "udm_memory_volatile": {
@@ -511,6 +516,45 @@ The draft schema follows below.  It was generated using a sample input
             "display_resolution": "288X192",
             "size": "1.55in"
          }]
+      }
+   ]
+}
+```
+
+*Sample Bluetooth 4.0 Accessory*
+```
+{
+   "udm_version":"0.9",
+   "udm_devices": [
+      {
+         "udm_key": "user-defined-key4",
+         "udm_model_name": "SensorTag",
+         "udm_model_number": "CC2541DK-MINI",
+         "udm_oem": "Texas Instruments",
+         "udm_guid": "1293FTI123jf24",
+         "udm_type": "ble-accessory",
+         "udm_memory_volatile": {
+            "size": "8kB"
+         },
+         "udm_memory_non_volatile": {
+            "size": "128kB",
+            "type": "flash"
+         },
+         "udm_chipset_details": {
+            "udm_chipset_inst_set": "8051",
+            "udm_chipset_vendor": "TI",
+            "udm_chipset_type": "CC2540",
+         },
+         "udm_sensors": {
+            "accelerometer": "1",
+            "humidity": "1",
+            "temperature": "1",
+            "pressure": "1",
+            "accelerometer": "1",
+            "gyroscope": "1",
+            "magnetometer": "1",
+            "capacative-touch": "1"
+         }
       }
    ]
 }
