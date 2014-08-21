@@ -37,12 +37,9 @@ The following primitves are:
 >        A JSON string. 
 
 
-# Problem
+# Overview
 
 There are numerous standards and ad-hoc approaches to defining device specifications with varying levels of granularity.  In terms of the nature and rigor of the data captured, some approaches require very strict schema definition, while others are very loose and capable of being extended over time.  As well, the format of the data varies (binary, xml, text, key value properties, json, sql, etc..).  Because of these differences, there isn't a good universal approach on the market, making it possible to get stuck in committee based standards, stove pipe proprietary approaches requiring a license, or incompatible approaches. 
-
-
-# Solution 
 
 Since there is no approach that fits the requirements, define one.  The proposal is to use a schema-free approach in terms of requiring conformance, putting the burden on the application to perform validation and constraint checks.  It is also proposed to go with a nearly universal format that is easy to deal with.  JSON seems to meet these criteria.  JSON-Schema will be provided to offer enough guidance for anyone to quickly and easily create device specifications.
 
@@ -104,10 +101,12 @@ udm_serialno
 udm_class
 udm_type
 udm_capabilities
-udm_model_name 
+udm_model_name
+udm_mktg_name
 udm_model_number 
 udm_oem 
 udm_chipset_details {
+   udm_chipset_inst_set
    udm_chipset_vendor 
    udm_chipset_type 
    udm_cpu_max_frequency 
@@ -182,7 +181,12 @@ The draft schema follows below.  It was generated using a sample input
                },
                "udm_os_version":{
                   "type":"string",
-                  "id":"http://iotone.org/specs/1/schema/udm_devices/0/udm_version",
+                  "id":"http://iotone.org/specs/1/schema/udm_devices/0/udm_os_version",
+                  "required":false
+               },
+               "udm_os":{
+                  "type":"string",
+                  "id":"http://iotone.org/specs/1/schema/udm_devices/0/udm_os",
                   "required":false
                },
                "udm_serialno":{
@@ -208,6 +212,11 @@ The draft schema follows below.  It was generated using a sample input
                "udm_model_name":{
                   "type":"string",
                   "id":"http://iotone.org/specs/1/schema/udm_devices/0/udm_model_name",
+                  "required":false
+               },
+               "udm_mktg_name":{
+                  "type":"string",
+                  "id":"http://iotone.org/specs/1/schema/udm_devices/0/udm_mktg_name",
                   "required":false
                },
                "udm_model_number":{
@@ -309,8 +318,64 @@ The draft schema follows below.  It was generated using a sample input
 
 # Example Use
 
+*Sample Mobile Handsets/Tablets*
+
+{
+   "udm_version":"0.9",
+   "udm_devices": [
+      {
+         "udm_key": "user-defined-key",
+         "udm_model_name": "Nexus",
+         "udm_model_no": "Nexus 7",
+         "udm_oem": "ASUS",
+         "udm_guid": "0585b8a6",
+         "udm_os_version": "4.4.2",
+         "udm_os": "Android",
+         "udm_type": "tablet",
+         "udm_chipset_details": {
+            "udm_chipset_inst_set": "armeabi-v7a",
+            "udm_chipset_vendor": "Qualcomm",
+            "udm_chipset_type": "Snapdragon S4Pro",
+            "udm_cpu_max_frequency": "1.5 GHz",
+            "udm_cpu_number_of_cores": "4"
+         },
+         "udm_displays": [{
+            "display_resolution": "1200x1824",
+            "ppi": "323"
+         }],
+         "udm_network_interfaces": [
+            { 
+               "lo": 
+               [ { "address": "127.0.0.1",
+                  "family": "IPv4",
+                  "internal": true },
+                 { "address": "::1",
+                   "family": "IPv6",
+                   "internal": true } ]
+            }, {
+               "wlan0": 
+               [ { "address": "10.0.0.105",
+                  "family": "IPv4",
+                  "internal": false },
+                 { "address": "fe80::de85:deff:fe90:4cb9",
+                   "family": "IPv6",
+                   "internal": false } ] 
+            }
+         ],
+         "udm_sensors": {
+            "accelerometer": "1",
+            "light": "1",
+            "gyroscope": "1",
+            "orientation": "1",
+            "magnetic": "1",
+            "sound": "1"
+         }
+      }
+   ]
+}
 
 
+*Sample 
 # Alternatives 
 
 In survey of the possible existing alternatives, there are hints of solutions that come close to what we are looking for.  In most cases, where XML is utilized, the "API Surface" for the definitions becomes vast. 
