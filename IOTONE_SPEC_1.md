@@ -320,6 +320,7 @@ The draft schema follows below.  It was generated using a sample input
 
 *Sample Mobile Handsets/Tablets*
 
+```
 {
    "udm_version":"0.9",
    "udm_devices": [
@@ -373,7 +374,7 @@ The draft schema follows below.  It was generated using a sample input
       }
    ]
 }
-
+```
 
 *Sample 
 # Alternatives 
