@@ -639,4 +639,10 @@ The UDM solution provides flexibility and some options for a variety of implemen
 
 *    GSMArena.com 
 
-* https://en.wikipedia.org/wiki/Metadata_standards
+*    W3C Mobile Web Initiative Device Descriptor Working Group (DEFUNCT): http://www.w3.org/2005/MWI/DDWG/
+
+*    OMA UAProf Spec (WAP focused): http://openmobilealliance.org/wp-content/uploads/2012/12/wap-248-uaprof-20011020-a.pdf
+
+*    WURF : http://sourceforge.net/projects/wurfl/files/WURFL/
+
+*    Metadata Standards: https://en.wikipedia.org/wiki/Metadata_standards
