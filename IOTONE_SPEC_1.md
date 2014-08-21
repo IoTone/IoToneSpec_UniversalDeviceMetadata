@@ -476,6 +476,46 @@ The draft schema follows below.  It was generated using a sample input
 }
 ```
 
+*Sample Smart Watch*
+```
+{
+   "udm_version":"0.9",
+   "udm_devices": [
+      {
+         "udm_key": "user-defined-key3",
+         "udm_model_name": "TOQ",
+         "udm_model_no": "ToqSW1",
+         "udm_oem": "Qualcomm",
+         "udm_guid": "TQ12391js92313132",
+         "udm_os_version": "",
+         "udm_os": "ThreadX RTOS",
+         "udm_type": "smartwatch",
+         "udm_memory_volatile": {
+            "size": "512MB"
+         },
+         "udm_memory_non_volatile": {
+            "size": "?",
+            "type": "flash"
+         },
+         "udm_chipset_details": {
+            "udm_chipset_inst_set": "arm-thumb",
+            "udm_chipset_vendor": "Qualcomm",
+            "udm_chipset_type": "ARM® Cortex™-M3 Core",
+            "udm_cpu_max_frequency": "200 MHz"
+         },
+         "udm_sensors": {
+            "accelerometer": "1",
+            "capacative-touch": "1"
+         },
+         "udm_displays": [{
+            "display_resolution": "288X192",
+            "size": "1.55in"
+         }]
+      }
+   ]
+}
+```
+
 # Alternatives 
 
 In survey of the possible existing alternatives, there are hints of solutions that come close to what we are looking for.  In most cases, where XML is utilized, the "API Surface" for the definitions becomes vast. 
