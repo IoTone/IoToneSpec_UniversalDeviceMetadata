@@ -94,6 +94,7 @@ descriptiveattrkey
 ```
 Any valid JSON String 
 udm_schema_name
+udm_dataset_name
 udm_version
 udm_key
 udm_guid
@@ -149,6 +150,11 @@ The draft schema follows below.  It was generated using a sample input into http
       "udm_schema_name":{
          "type":"string",
          "id":"http://iotone.org/specs/1/schema/udm_schema_name",
+         "required":false
+      },
+      "udm_dataset_name":{
+         "type":"string",
+         "id":"http://iotone.org/specs/1/schema/udm_dataset_name",
          "required":false
       },
       "udm_version":{
@@ -329,6 +335,7 @@ The draft schema follows below.  It was generated using a sample input into http
 ```
 {
    "udm_version":"0.9",
+   "udm_dataset_name": "sample-android-devices"
    "udm_devices": [
       {
          "udm_key": "user-defined-key",
