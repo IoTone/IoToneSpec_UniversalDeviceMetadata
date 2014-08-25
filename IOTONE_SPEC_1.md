@@ -324,10 +324,10 @@ The draft schema follows below.  It was generated using a sample input into http
                },
                "udm_services_link": {
                    "id":"http://iotone.org/specs/2/schema/usm_services",
-                       "required": false,
-                           "type": "array" ,
-                               "items": {
-                               }
+                    "required": false,
+                    "type": "array" ,
+                    "items": {
+                    }
                }
             }
          }
