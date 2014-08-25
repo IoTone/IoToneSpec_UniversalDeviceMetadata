@@ -131,6 +131,7 @@ udm_vendor
 udm_mfg_origin
 udm_mfg_date
 udm_displays
+udm_services_link
 ```
 
 Users of UDM are free to define custom attributes to meet needs not yet forseen.
@@ -320,6 +321,13 @@ The draft schema follows below.  It was generated using a sample input into http
                   "type":"string",
                   "id":"http://iotone.org/specs/1/schema/udm_devices/0/udm_displays",
                   "required":false
+               },
+               "udm_services_link": {
+                   "id":"http://iotone.org/specs/2/schema/usm_services",
+                       "required": false,
+                           "type": "array" ,
+                               "items": {
+                               }
                }
             }
          }
@@ -390,7 +398,12 @@ The draft schema follows below.  It was generated using a sample input into http
             "orientation": "1",
             "magnetic": "1",
             "sound": "1"
+         },
+         "udm_services_link": [{
+            "usm_key": "myphone.local",
+            "usm_type": "webserver"
          }
+         ]
       },
       {
          "udm_key": "user-defined-key2",
