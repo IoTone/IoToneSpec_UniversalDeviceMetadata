@@ -1,5 +1,5 @@
-Universal Device Metadata (UDM) Specification draft v0.9
-========================================================
+Universal Device Metadata (UDM) Specification draft v0.9.1.1
+==========================================================
 
 This document is released under the terms of the [Apache 2.0 License](https://raw.githubusercontent.com/IoTone/IoToneSpec_UniversalDeviceMetadata/master/LICENSE)
 
@@ -105,7 +105,7 @@ udm_schema_name
 udm_dataset_name
 udm_version
 udm_key
-udm_guid
+udm_uuid
 udm_serialno
 udm_class
 udm_type
@@ -185,9 +185,9 @@ The draft schema follows below.  It was generated using a sample input into http
                   "id":"http://iotone.org/specs/1/schema/udm_devices/0/udm_key",
                   "required":false
                },
-               "udm_guid":{
+               "udm_uuid":{
                   "type":"string",
-                  "id":"http://iotone.org/specs/1/schema/udm_devices/0/udm_guid",
+                  "id":"http://iotone.org/specs/1/schema/udm_devices/0/udm_uuid",
                   "required":false
                },
                "udm_schema_name":{
@@ -350,7 +350,7 @@ The draft schema follows below.  It was generated using a sample input into http
 
 ```
 {
-   "udm_version":"0.9",
+   "udm_version":"0.9.1",
    "udm_dataset_name": "sample-android-devices"
    "udm_devices": [
       {
@@ -358,7 +358,7 @@ The draft schema follows below.  It was generated using a sample input into http
          "udm_model_name": "Nexus",
          "udm_model_number": "Nexus 7",
          "udm_oem": "ASUS",
-         "udm_guid": "0585b8a6",
+         "udm_uuid": "1a8748bd-9c13-46ab-a762-e463376a1f14",
          "udm_os_version": "4.4.2",
          "udm_os": "Android",
          "udm_type": "tablet",
@@ -418,7 +418,7 @@ The draft schema follows below.  It was generated using a sample input into http
          "udm_model_name": "Galaxy S II",
          "udm_model_number": "I9100",
          "udm_oem": "Samsung",
-         "udm_guid": "a80000Bf1f002",
+         "udm_uuid": "1a8748bd-9c13-46ab-a762-e463376a1f11",
          "udm_os_version": "4.0.4",
          "udm_os": "Android",
          "udm_type": "phone",
@@ -477,14 +477,14 @@ The draft schema follows below.  It was generated using a sample input into http
 *Sample Microcontroller*
 ```
 {
-   "udm_version":"0.9",
+   "udm_version":"0.9.1",
    "udm_devices": [
       {
          "udm_key": "user-defined-key3",
          "udm_model_name": "FRDM-KL25Z",
          "udm_model_number": "MKL25Z128VLK4",
          "udm_oem": "Freescale",
-         "udm_guid": "33u821381203810jdsd01231",
+         "udm_uuid": "1a8748bd-9c13-46ab-a762-e463376a1f10",
          "udm_os_version": "20140530_k20dx128_kl25z_if_opensda",
          "udm_os": "mbed",
          "udm_type": "32-bit mcu",
@@ -513,14 +513,14 @@ The draft schema follows below.  It was generated using a sample input into http
 *Sample Smart Watch*
 ```
 {
-   "udm_version":"0.9",
+   "udm_version":"0.9.1",
    "udm_devices": [
       {
          "udm_key": "user-defined-key3",
          "udm_model_name": "TOQ",
          "udm_model_number": "ToqSW1",
          "udm_oem": "Qualcomm",
-         "udm_guid": "TQ12391js92313132",
+         "udm_uuid": "1a8748bd-9c13-46ab-a762-e463376a1f26",
          "udm_os": "ThreadX RTOS",
          "udm_type": "smartwatch",
          "udm_memory_volatile": {
@@ -552,7 +552,7 @@ The draft schema follows below.  It was generated using a sample input into http
 *Sample Bluetooth 4.0 Accessory*
 ```
 {
-   "udm_version":"0.9",
+   "udm_version":"0.9.1",
    "udm_devices": [
       {
          "udm_key": "user-defined-key4",
@@ -560,7 +560,7 @@ The draft schema follows below.  It was generated using a sample input into http
          "udm_model_number": "CC2541DK-MINI",
          "udm_model_rev": "1.0.2",
          "udm_oem": "Texas Instruments",
-         "udm_guid": "1293FTI123jf24",
+         "udm_uuid": "1a8748bd-9c13-46ab-a762-e463376a1f16",
          "udm_type": "ble-accessory",
          "udm_memory_volatile": {
             "size": "8kB"
@@ -641,7 +641,8 @@ The UDM solution provides flexibility and some options for a variety of implemen
 * JSON Spec - http://json.org/ 
 * http://json-schema.org/latest/json-schema-core.html
 * https://github.com/IoTone/IoToneSpec_UniversalServiceMetadata/blob/master/IOTONE_SPEC_2.md
-
+* http://tools.ietf.org/html/rfc4122
+* 
 # Non-Normative References 
 
 * SmartThings Device Type Specification - http://docs.smartthings.com/en/latest/device-type-developers-guide/anatomy-of-a-device-type.html 
