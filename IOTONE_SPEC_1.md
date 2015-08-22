@@ -58,6 +58,14 @@ Since there is no approach that fits the requirements, define one.  The proposal
 -    No 3rd Party Intellectual Property Rights associated with the design
 -    Easily handle self-referential attributes
 
+# Implementation
+
+Universal Device Metadata(UDM) Specification is defined as a microfotmat for defining devices.  It references Universal Service Metadata.  It is natural to think a device may expose one or more services.  A device may only choose to expose services and no device details, though it is recommended that for every service, it optionally include a link to the device hosting the service using UDM.
+
+## Alternative Implementation 1: HASH-SETS
+
+It is possible to break down JSON into simple HASH-SET encodings.  The USM schema's notion of JSON objects with key attribute value sets is very easily represented in HASH-SET form.  One could implement a network protocol to transmit such sets simply and compactly over any number of transports.  JSON isn't neccessary as much as a structure to the data is necessary, in order to encapsulate heirarchy and relationships between data.  For constrained environments this iplementation will make more sense.  It is then possible to compact the data into a serialized format for wire transfer, such as in a TLV8 packet encoding, and transmit with fragmentation if needed.  This will be a requirement for transports with limits on packet size.  As such, if JSON isn't a requirement in alternative implementations, then HTTP is not a strict requirement.  More complex nested JSON structures would need flattening, but one could compensate for the complexity by packing more data into the key, and requiring more key prefixes per child object node to represent.
+
 # Common Device Attributes
 
 Below are a list of attributes that will be used to compose UDM.
@@ -631,7 +639,8 @@ The UDM solution provides flexibility and some options for a variety of implemen
 # Normative References 
 
 * JSON Spec - http://json.org/ 
-*  http://json-schema.org/latest/json-schema-core.html
+* http://json-schema.org/latest/json-schema-core.html
+* https://github.com/IoTone/IoToneSpec_UniversalServiceMetadata/blob/master/IOTONE_SPEC_2.md
 
 # Non-Normative References 
 
