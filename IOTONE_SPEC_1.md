@@ -645,7 +645,7 @@ The UDM solution provides flexibility and some options for a variety of implemen
 * 
 # Non-Normative References 
 
-* SmartThings Device Type Specification - http://docs.smartthings.com/en/latest/device-type-developers-guide/anatomy-of-a-device-type.html 
+* SmartThings Device Type descriptors - https://github.com/SmartThingsCommunity/Code/tree/master/device-types
 
 * JSON-LD: http://www.w3.org/TR/json-ld-api/ 
 
